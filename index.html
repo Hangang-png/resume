@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>二分的简历</title>
+  <title>Maria的简历</title>
   <style>
     body {
       margin: 0;
@@ -18,6 +18,8 @@
       padding: 2rem;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: white;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .avatar {
@@ -26,15 +28,17 @@
       border-radius: 50%;
       overflow: hidden;
       margin-right: 2rem;
+      margin-bottom: 1rem;
       border: 3px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .avatar img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-
-      transform: scale(0.8);  /* 缩小图像为原来的 80% */
+      object-fit: cover;  /* 保证图片完全覆盖容器，不变形 */
       object-position: center;  /* 确保图片居中 */
     }
 
@@ -57,6 +61,53 @@
     .contact {
       margin-top: 0.5rem;
       font-size: 0.95rem;
+    }
+
+    /* 手机适配 */
+    @media (max-width: 600px) {
+      .banner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .avatar {
+        width: 80px;
+        height: 80px;
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      .avatar img {
+        object-fit: cover; /* 保证图片完全覆盖容器，不变形 */
+        object-position: center;
+      }
+      .info h1 {
+        font-size: 1.5rem;
+      }
+      .info h2 {
+        font-size: 1rem;
+      }
+      .contact {
+        font-size: 0.85rem;
+      }
+
+      .footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.footer a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #2a5298;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
     }
 
     .section {
@@ -83,6 +134,10 @@
       margin-bottom: 0.5rem;
     }
 
+    .section p {
+  line-height: 1.6;
+    }
+
     .highlight {
       color: #2a5298;
       font-weight: bold;
@@ -94,23 +149,23 @@
   <!-- 顶部 Banner -->
   <div class="banner">
     <div class="avatar">
-      <img src="本人.jpg" alt="二分头像" />
+      <img src="本人.jpg" alt="John头像" />
     </div>
     <div class="info">
-      <h1>二分</h1>
+      <h1>John's resume</h1>
       <h2>.NET 工程师</h2>
       <p>永远向前</p>
       <div class="contact">
-        📍 多伦多 ｜ ☎ 437-477-6689
+        📍 多伦多 ｜ ☎  437-477-6689
       </div>
     </div>
   </div>
 
   <!-- 技能 -->
   <div class="section">
-    <h3>技能技能</h3>
+    <h3>技能专长</h3>
     <ul>
-      <li><span class="highlight">语言：</span>C#, JavaScript, SQL</li>
+      <li><span class="highlight">语言：</span>C#, JavaScript, SQL,Python</li>
       <li><span class="highlight">框架：</span>.NET Core, ASP.NET, WPF</li>
       <li><span class="highlight">前端：</span>HTML5, CSS3, Vue.js</li>
       <li><span class="highlight">数据库：</span>SQL Server, MySQL</li>
@@ -147,6 +202,10 @@
       关注技术趋势，持续提升自我，秉持“永远向前”的信念面对每一个项目与挑战。
     </p>
   </div>
-
+ <!-- 底部 -->
+  <footer class="footer">
+    <p>© 2025 Maria. All rights reserved.</p>
+    <a href="maria_resume.pdf" download> 下载 PDF 简历 📄</a>
+  </footer>
 </body>
 </html>
