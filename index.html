@@ -1,158 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>John的简历</title>
+  <meta charset="UTF-8">
+  <title>简历生成器</title>
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/@pdf-lib/fontkit@0.0.4/dist/fontkit.umd.min.js"></script>
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f4f6f8;
-      color: #333;
-    }
-
-    .banner {
-      display: flex;
-      align-items: center;
-      padding: 2rem;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 2rem;
-      margin-bottom: 1rem;
-      border: 3px solid white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;  /* 保证图片完全覆盖容器，不变形 */
-      object-position: center;  /* 确保图片居中 */
-    }
-
-    .info h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    .info h2 {
-      margin: 0.3rem 0;
-      font-weight: normal;
-      font-size: 1.2rem;
-    }
-
-    .info p {
-      font-style: italic;
-      color: #e0e0e0;
-    }
-
-    .contact {
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    /* 手机适配 */
-    @media (max-width: 600px) {
-      .banner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .avatar {
-        width: 80px;
-        height: 80px;
-        margin-right: 0;
-        margin-bottom: 1rem;
-      }
-      .avatar img {
-        object-fit: cover; /* 保证图片完全覆盖容器，不变形 */
-        object-position: center;
-      }
-      .info h1 {
-        font-size: 1.5rem;
-      }
-      .info h2 {
-        font-size: 1rem;
-      }
-      .contact {
-        font-size: 0.85rem;
-      }
-
-      .footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-.footer a {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: #2a5298;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-    }
-
-    .section {
-      padding: 1.5rem 2rem;
-      background: white;
-      margin: 1rem auto;
-      max-width: 800px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .section h3 {
-      border-left: 5px solid #1e3c72;
-      padding-left: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .section ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .section li {
-      margin-bottom: 0.5rem;
-    }
-
-    .section p {
-  line-height: 1.6;
-    }
-
-    .highlight {
-      color: #2a5298;
-      font-weight: bold;
-    }
+    body { font-family: sans-serif; margin: 40px; }
+    button { padding: 10px 20px; font-size: 16px; }
   </style>
 </head>
 <body>
-
-  <!-- 顶部 Banner -->
-  <div class="banner">
+  
+<!-- 顶部 Banner -->
+  <div class="banner fade-in">
     <div class="avatar">
-      <img src="本人.jpg" alt="John头像" />
+      <img src="female.jpeg" alt="Maria头像" />
     </div>
     <div class="info">
-      <h1>John's resume</h1>
+      <h1 id="hName">Maria Rossi</h1>
+	  <h2>女，27</h2>
       <h2>.NET 工程师</h2>
       <p>永远向前</p>
       <div class="contact">
@@ -162,10 +30,10 @@
   </div>
 
   <!-- 技能 -->
-  <div class="section">
+  <div class="section fade-in-delay">
     <h3>技能专长</h3>
     <ul>
-      <li><span class="highlight">语言：</span>C#, JavaScript, SQL,Python</li>
+      <li><span class="highlight">语言：</span>C#, JavaScript, SQL, Python</li>
       <li><span class="highlight">框架：</span>.NET Core, ASP.NET, WPF</li>
       <li><span class="highlight">前端：</span>HTML5, CSS3, Vue.js</li>
       <li><span class="highlight">数据库：</span>SQL Server, MySQL</li>
@@ -174,38 +42,41 @@
   </div>
 
   <!-- 项目经验 -->
-  <div class="section">
+  <div class="section fade-in-delay" style="animation-delay: 0.8s;">
     <h3>项目经验</h3>
-    <ul>
-      <li>
-        <strong>企业人事管理系统</strong> - 使用 WPF + .NET Core 构建，支持员工信息管理、权限分配、工资计算等。
-      </li>
-      <li>
-        <strong>线上商城后台管理平台</strong> - 使用 ASP.NET MVC + Vue 前后端分离，实现订单、库存、用户等模块。
-      </li>
-    </ul>
+    
+    <p>
+      企业人事管理系统</strong> - 使用 WPF + .NET Core 构建，支持员工信息管理、权限分配、工资计算等。
+      线上商城后台管理平台</strong> - 使用 ASP.NET MVC + Vue 前后端分离，实现订单、库存、用户等模块。
+    </p>
+
   </div>
 
   <!-- 教育背景 -->
-  <div class="section">
+  <div class="section1 fade-in-delay" style="animation-delay: 1.1s;">
     <h3>教育背景</h3>
     <ul>
-      <li>某某大学 ｜ 自动化与计算机专业 ｜ 学士</li>
+      <li>北京大学 ｜ 自动化与计算机专业 ｜ 学士</li>
+      <li>清华大学 ｜ 自动化与计算机专业 ｜ 硕士</li>
     </ul>
   </div>
 
   <!-- 自我评价 -->
-  <div class="section">
+  <div class="section1 fade-in-delay" style="animation-delay: 1.4s;">
     <h3>自我评价</h3>
     <p>
       热爱编程，注重代码质量，具备良好的学习能力与沟通协作能力。
       关注技术趋势，持续提升自我，秉持“永远向前”的信念面对每一个项目与挑战。
     </p>
   </div>
- <!-- 底部 -->
-  <footer class="footer">
+
+  <!-- 底部 -->
+  <footer class="footer fade-in-delay" style="animation-delay: 1.7s;">
     <p>© 2025 Maria. All rights reserved.</p>
-    <a href="maria_resume.pdf" download> 下载 PDF 简历 📄</a>
-  </footer>
+
+    <button onclick="generatePDF()">下载 PDF 简历 📄</button>
+
+<!-- 引入外部JS文件 -->
+  <script src="index.js"></script>
 </body>
 </html>
