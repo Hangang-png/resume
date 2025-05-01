@@ -1,4 +1,12 @@
-    body {
+/* 公共基础样式 */
+/* 初始化所有元素和伪元素的布局 */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
       background: #f4f6f8;
